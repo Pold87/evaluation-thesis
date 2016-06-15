@@ -1,0 +1,8 @@
+import plotly.plotly as py
+from plotly.graph_objs import *
+# auto sign-in with credentials or use py.sign_in()
+trace1 = Heatmap(
+    z=[[1, 2, 3], [4, 5, 6]]
+)
+data = Data([trace1])
+py.plot(data)
