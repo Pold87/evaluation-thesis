@@ -15,6 +15,8 @@ for i = 1:size(hists, 1)
     
     if (use_expected)
         % Calculate and normalize expected similarities
+        i
+        k
         expected_sim_x = normpdf(pos(i, 1), pos(k, 1), tolerated_error) *  ...
             tolerated_error * sqrt(2 * pi);
         expected_sim_y = normpdf(pos(i, 2), pos(k, 2), tolerated_error) * ...

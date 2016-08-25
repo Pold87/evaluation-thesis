@@ -7,9 +7,10 @@ clear, clc;
 % overall loss for an image (for a map).
 
 %map_name = 'sparse_board';
-map_name = 'pencils';
+map_name = 'mosaic_enlarged';
 %map_name = 'splash';
 
+base_path = '/home/pold/Documents/Internship/map_evaluation';
 hists_path = sprintf('/home/pold/Documents/Internship/map_evaluation/%s/mat_train_hists_color.csv', ...
     map_name);
 pos_path = sprintf('/home/pold/Documents/Internship/map_evaluation/%s/targets.csv', ...
@@ -40,14 +41,16 @@ mean(losses)
 
 width = 640;
 height = 480;
-I = make_heatmap(width, height, map_name, pos, losses, tolerated_error, []);
+tolerated_error = 25;
+I = make_heatmap(width, height, map_name, pos, losses, tolerated_error, [], base_path);
+hold on
 
 
 %%
-k = 201;
+k = 458;
 pos_k = pos(k, :);
 use_expected = 0;
 tolerated_error = 25;
 figure
 sims = compare_hist_to_all_others(k, hists, pos, use_expected, 25);
-make_heatmap(width, height, map_name, pos, sims, tolerated_error, pos_k);
+make_heatmap(width, height, map_name, pos, sims, tolerated_error, pos_k, base_path);
